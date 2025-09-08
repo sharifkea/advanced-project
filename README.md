@@ -11,7 +11,7 @@ This repository contains the code, notebooks, and resources for our AI project.
 # create venv
     python -m venv venv    
         # My version
-            Python 3.10.5
+            Python 3.12.6
 # Activate venv
     On Windows (in Git Bash):
     source venv/Scripts/activate
