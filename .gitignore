@@ -21,7 +21,7 @@ models/*.pth
 models/*.pt
 
 # Jupyter notebook outputs (optional, if you want to clear outputs)
-*.ipynb
+*.ipynb filter=nbstripout
 # Comment out the above line if you WANT to track notebooks with outputs
 
 # OS-specific files
