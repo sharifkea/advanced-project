@@ -1,0 +1,85 @@
+Explanation of Variables and Their Values
+Based on the dataset’s documentation and common descriptions (e.g., from Kaggle and related analyses like), here’s a detailed breakdown of each column, its type, and the meaning of its values: Link: https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset/data
+•  id (Integer) 
+•	Description: A unique identifier for each patient record.
+•	Values: Sequential integers (e.g., 0, 1, 2, ..., 99999).
+•	Use: Not used for modeling (drop this column during preprocessing as it’s not predictive).
+•	Example: id=0 refers to the first patient record.
+•  age (Integer) 
+•	Description: Age of the patient in days.
+•	Values: Positive integers (e.g., 18393 days ≈ 50 years).
+•	Use: Convert to years for interpretability (age_years = age / 365). Age is a key risk factor for cardiovascular disease, with older age often correlating with higher risk.
+•	Example: age=18393 ≈ 50.4 years.
+•  gender (Categorical, Integer) 
+•	Description: Gender of the patient.
+•	Values: 
+o	1: Female
+o	2: Male
+•	Use: Gender can influence heart disease risk (e.g., males may have higher risk in some cases). Often encoded as a categorical variable or dummy variable (0/1) for modeling.
+•	Example: gender=1 means the patient is female.
+•	Note: The dataset analysis (e.g.,) confirms 1 as female and 2 as male by comparing average heights (gender=2 has higher average height, ~169.95 cm, vs. ~161.36 cm for gender=1).
+•  height (Integer) 
+•	Description: Height of the patient in centimeters.
+•	Values: Positive integers (e.g., 168 cm).
+•	Use: Used to calculate BMI (Body Mass Index) with weight, which is a risk factor for heart disease. Outliers (e.g., <140 cm or >200 cm) may need cleaning.
+•	Example: height=168 means 168 cm (1.68 meters).
+•  weight (Float) 
+•	Description: Weight of the patient in kilograms.
+•	Values: Positive floats (e.g., 62.0 kg).
+•	Use: Combined with height to compute BMI (BMI = weight / (height_m^2)), a key indicator of obesity-related heart risk. Outliers (e.g., <40 kg or >150 kg) may need cleaning.
+•	Example: weight=62.0 means 62 kg.
+•  ap_hi (Integer) 
+•	Description: Systolic blood pressure (mmHg), the pressure in arteries when the heart beats.
+•	Values: Typically ranges from 90–200 mmHg, but outliers (e.g., negative values or >300) may exist and need cleaning.
+•	Use: High systolic pressure is a major risk factor for cardiovascular disease.
+•	Example: ap_hi=110 means systolic blood pressure of 110 mmHg.
+•  ap_lo (Integer) 
+•	Description: Diastolic blood pressure (mmHg), the pressure in arteries when the heart rests.
+•	Values: Typically ranges from 60–120 mmHg, with possible outliers needing cleaning.
+•	Use: High diastolic pressure is also a risk factor for heart disease.
+•	Example: ap_lo=80 means diastolic blood pressure of 80 mmHg.
+•  cholesterol (Categorical, Integer) 
+•	Description: Cholesterol level of the patient.
+•	Values: 
+o	1: Normal
+o	2: Above normal
+o	3: Well above normal
+•	Use: High cholesterol is a significant risk factor for cardiovascular disease. Treat as a categorical variable (e.g., one-hot encode for modeling).
+•	Example: cholesterol=3 means well above normal, indicating high risk.
+•  gluc (Categorical, Integer) 
+•	Description: Glucose level of the patient.
+•	Values: 
+o	1: Normal
+o	2: Above normal
+o	3: Well above normal
+•	Use: High glucose levels (e.g., indicating diabetes) increase heart disease risk. Treat as categorical.
+•	Example: gluc=1 means normal glucose levels.
+•  smoke (Binary, Integer) 
+•	Description: Whether the patient smokes.
+•	Values: 
+o	0: Does not smoke
+o	1: Smokes
+•	Use: Smoking is a major risk factor for heart disease.
+•	Example: smoke=0 means the patient does not smoke.
+•  alco (Binary, Integer) 
+•	Description: Whether the patient consumes alcohol.
+•	Values: 
+o	0: Does not consume alcohol
+o	1: Consumes alcohol
+•	Use: Excessive alcohol consumption can contribute to heart disease risk.
+•	Example: alco=0 means no alcohol consumption.
+•  active (Binary, Integer) 
+•	Description: Whether the patient is physically active.
+•	Values: 
+o	0: Not physically active
+o	1: Physically active
+•	Use: Physical activity reduces heart disease risk.
+•	Example: active=1 means the patient is physically active.
+•  cardio (Binary, Integer, Target Variable) 
+•	Description: The target variable indicating the presence or absence of cardiovascular disease.
+•	Values: 
+o	0: No cardiovascular disease (healthy)
+o	1: Presence of cardiovascular disease (e.g., heart disease, heart failure, or related conditions)
+•	Use: This is the variable your static model will predict. A value of 1 indicates the patient has been diagnosed with or is at risk of a cardiovascular condition, based on medical examination data.
+•	Example: cardio=1 means the patient has a cardiovascular disease; cardio=0 means they do not.
+
