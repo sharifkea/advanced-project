@@ -1,8 +1,24 @@
-We are doing our Project
-AI-Driven Continuous Risk Assessment System to Predict Heart Failure 
-Our system aims to predict an individual’s risk of heart failure by combining general population-level 
-data with personalized time-series monitoring. The first model is trained with a Heart Disease 
-related dataset to learn general risk patterns across diverse patient profiles. The second model 
-focuses on continuous heart rate data generated for a specific person, capturing personalized 
-variations over time. By integrating these two models, the system can provide a more accurate and 
-personalized risk prediction, offering both broad medical insight and individual-specific monitoring. 
+# AI Project Group
+
+This repository contains the code, notebooks, and resources for our AI project.
+
+## Setup Instructions
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/sharifkea/advanced-project.git
+   cd advanced-project
+# create venv
+    python -m venv venv    
+        # My version
+            Python 3.10.5
+# Activate venv
+    On Windows (in Git Bash):
+    source venv/Scripts/activate
+# install packs
+    pip install -r requirements.txt
+# Set up nbstripout for Jupyter notebooks:
+    pip install nbstripout
+    nbstripout --install
+# Launch Jupyter:
+    jupyter notebook
