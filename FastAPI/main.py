@@ -47,11 +47,11 @@ async def predict_risk(input_data: PredictionInput):
         
         # Ensure column order matches training (adjust if your feature order differs)
         feature_columns = ['gender', 'height', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc', 
-                           'smoke', 'alco', 'active', 'age_years', 'BMI']
+                           'smoke', 'alco', 'active', 'age_years', 'BMI',]
         input_df = input_df[feature_columns]
         
         # Scale the input features (assuming scaler was fit on these exact features)
-        input_scaled = scaler.transform(input_df)
+        input_scaled = scaler.fit_transform(input_df)
         
         # Make prediction: probability for class 1 (cardio risk)
         prob = model.predict_proba(input_scaled)[0][1]  # [prob_class0, prob_class1]

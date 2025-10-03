@@ -11,7 +11,7 @@ cd C:\Users\ronys\Documents\FistAPI\1stPro
 pip install --upgrade pip
 
 # Install FastAPI and Uvicorn (Corrected package name)
-pip install fastapi uvicorn[standard] xgboost joblib pydantic pandas typing numpy
+pip install fastapi uvicorn[standard]
 
 # Start API: Kill the server (Ctrl+C), then 
 uvicorn main:app --reload
