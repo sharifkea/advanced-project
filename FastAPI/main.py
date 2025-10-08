@@ -11,7 +11,7 @@ app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for p
 # Load the trained model and scaler
 # Assuming you saved them as 'xgboost_model.pkl' and 'scaler.pkl' using joblib.dump(model, 'xgboost_model.pkl')
 try:
-    model = joblib.load('xgboost_model.pkl')
+    model = joblib.load('best_model.pkl')
     scaler = joblib.load('scaler.pkl')
     print("Model and scaler loaded successfully!")
 except FileNotFoundError:
@@ -49,13 +49,17 @@ async def predict_risk(input_data: PredictionInput):
         feature_columns = ['gender', 'height', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc', 
                            'smoke', 'alco', 'active', 'age_years', 'BMI',]
         input_df = input_df[feature_columns]
-        
+        print(input_df)
         # Scale the input features (assuming scaler was fit on these exact features)
-        input_scaled = scaler.fit_transform(input_df)
+        input_scaled = scaler.transform(input_df)
+
+        print(input_scaled)
         
         # Make prediction: probability for class 1 (cardio risk)
         prob = model.predict_proba(input_scaled)[0][1]  # [prob_class0, prob_class1]
         pred_class = 1 if prob > 0.5 else 0  # Binary threshold; adjust as needed
+
+        print(prob, pred_class)
         
         # Generate message
         if pred_class == 1:
