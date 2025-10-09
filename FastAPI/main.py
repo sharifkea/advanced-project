@@ -6,16 +6,15 @@ import pandas as pd
 from typing import Dict, Any
 
 # Initialize FastAPI app
-app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using XGBoost model")
+app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using LightGBM model")
 
-# Load the trained model and scaler
-# Assuming you saved them as 'xgboost_model.pkl' and 'scaler.pkl' using joblib.dump(model, 'xgboost_model.pkl')
+# Load the pre-trained model and scaler
 try:
     model = joblib.load('best_model.pkl')
     scaler = joblib.load('scaler.pkl')
     print("Model and scaler loaded successfully!")
 except FileNotFoundError:
-    raise Exception("Model or scaler file not found. Please ensure 'xgboost_model.pkl' and 'scaler.pkl' are in the same directory.")
+    raise Exception("Model or scaler file not found.")
 
 # Define input schema using Pydantic for validation
 class PredictionInput(BaseModel):
@@ -78,7 +77,7 @@ async def predict_risk(input_data: PredictionInput):
 # Health check endpoint
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "model": "XGBoost loaded"}
+    return {"status": "healthy", "model": "LightGBM loaded"}
 
 # Run the app with: uvicorn main:app --reload (save this as main.py)
 if __name__ == "__main__":

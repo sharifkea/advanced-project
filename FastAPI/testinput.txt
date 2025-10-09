@@ -24,4 +24,19 @@
   "age_years": 51,
   "BMI": 38.8
 }
-
+{
+  "gender": 1,
+  "height": 156,
+  "ap_hi": 100,
+  "ap_lo": 60,
+  "cholesterol": 3,
+  "gluc": 1,
+  "smoke": 0,
+  "alco": 0,
+  "active": 0,
+  "age_years": 49,
+  "BMI": 35.9
+}
+age	gender	height	weight	ap_hi	ap_lo	cholesterol	gluc	smoke	alco	active	cardio BMI
+49	  1	      156	      56	  100	    60	    1	        1	    0	    0	    0	      0   35.9
+BMI=(weight/height)*100
