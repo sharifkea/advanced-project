@@ -13,7 +13,9 @@ This repository contains the code, notebooks, and resources for our AI project.
         # My version
             Python 3.12.6
 # Activate venv
-    On Windows (in Git Bash):
+    On Windows:
+    .\venv\Scripts\activate
+    in Git Bash:
     source venv/Scripts/activate
 # install packs
     pip install -r requirements.txt
@@ -22,3 +24,5 @@ This repository contains the code, notebooks, and resources for our AI project.
     nbstripout --install
 # Launch Jupyter:
     jupyter notebook
+# Deactivate venv
+    deactivate
