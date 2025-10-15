@@ -7,7 +7,7 @@
     .\venv\Scripts\activate
 
 # Install FastAPI and Uvicorn, ETC.
-    pip install fastapi uvicorn[standard] lightgbm 
+    pip install fastapi uvicorn[standard] lightgbm joblib pandas scikit-learn
 
 # Start API: Kill the server (Ctrl+C), then 
     uvicorn main:app --reload
