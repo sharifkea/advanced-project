@@ -4,9 +4,16 @@ import joblib  # or use pickle if you saved with pickle
 import numpy as np
 import pandas as pd
 from typing import Dict, Any
-
+from fastapi.middleware.cors import CORSMiddleware
 # Initialize FastAPI app
 app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using XGBoost model")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For local/prod; tighten to ["http://127.0.0.1:8000", "https://ronyosharif.pythonanywhere.com"] in prod
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load the trained model and scaler
 # Assuming you saved them as 'xgboost_model.pkl' and 'scaler.pkl' using joblib.dump(model, 'xgboost_model.pkl')

@@ -1,0 +1,18 @@
+import requests
+username = 'ronyosharif'
+token = 'acaee4f7e1be1b83161039f687d5328cdfda2bec'
+
+response = requests.get(
+    'https://www.pythonanywhere.com/api/v0/user/{username}/cpu/'.format(
+        username=username
+    ),
+    headers={'Authorization': 'Token {token}'.format(token=token)}
+)
+if response.status_code == 200:
+    print('CPU quota info:')
+    print(response.content)
+else:
+    print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
+
+
+    pa website create --domain ronyosharif.pythonanywhere.com --command '/home/ronyosharif/.virtualenvs/cardio-api-venv/bin/uvicorn --app-dir /home/ronyosharif/cardio-api --uds ${DOMAIN_SOCKET} main:app --log-level info'

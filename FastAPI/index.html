@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiovascular Risk Predictor</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        form { display: grid; gap: 10px; }
+        label { font-weight: bold; }
+        input, select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #007bff; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 4px; display: none; }
+        .high-risk { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .low-risk { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; }
+        .invalid { border-color: #dc3545 !important; }
+    </style>
+</head>
+<body>
+    <h1>Cardiovascular Risk Assessment</h1>
+    <p>Enter your details below for a preliminary risk prediction (not medical advice). All fields are validated per dataset specifications.</p>
+    
+    <form id="riskForm">
+        <label for="age">Age (years):</label>
+        <input type="number" id="age" min="1" max="100" step="1" required>
+        
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+            <option value="">Select...</option>
+            <option value="F">Female (1)</option>
+            <option value="M">Male (2)</option>
+        </select>
+        
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" min="1" max="250" step="1" required>
+        
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" min="1" max="300" step="0.1" required>
+        
+        <label for="ap_hi">Systolic BP (ap_hi, mmHg):</label>
+        <input type="number" id="ap_hi" min="60" max="240" step="1" required>
+        
+        <label for="ap_lo">Diastolic BP (ap_lo, mmHg):</label>
+        <input type="number" id="ap_lo" min="40" max="130" step="1" required>
+        
+        <label for="cholesterol">Cholesterol:</label>
+        <select id="cholesterol" required>
+            <option value="">Select...</option>
+            <option value="1">Normal (1)</option>
+            <option value="2">Above normal (2)</option>
+            <option value="3">Well above normal (3)</option>
+        </select>
+        
+        <label for="gluc">Glucose:</label>
+        <select id="gluc" required>
+            <option value="">Select...</option>
+            <option value="1">Normal (1)</option>
+            <option value="2">Above normal (2)</option>
+            <option value="3">Well above normal (3)</option>
+        </select>
+        
+        <label for="smoke">Smoke:</label>
+        <select id="smoke" required>
+            <option value="">Select...</option>
+            <option value="0">No (0)</option>
+            <option value="1">Yes (1)</option>
+        </select>
+        
+        <label for="alco">Alcohol:</label>
+        <select id="alco" required>
+            <option value="">Select...</option>
+            <option value="0">No (0)</option>
+            <option value="1">Yes (1)</option>
+        </select>
+        
+        <label for="active">Physically Active:</label>
+        <select id="active" required>
+            <option value="">Select...</option>
+            <option value="0">No (0)</option>
+            <option value="1">Yes (1)</option>
+        </select>
+        
+        <button type="submit" id="submitBtn">Predict Risk</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('riskForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const resultDiv = document.getElementById('result');
+        
+        // API endpoint (update to your hosted URL)
+        const API_URL = 'http://127.0.0.1:8000/predict';
+        
+        // Validation on input change
+        form.addEventListener('input', validateForm);
+        form.addEventListener('change', validateForm);
+        
+        function validateForm() {
+            let isValid = true;
+            const fields = form.querySelectorAll('input, select');
+            
+            fields.forEach(field => {
+                if (!field.value || field.value === '') {
+                    isValid = false;
+                    field.classList.add('invalid');
+                } else {
+                    field.classList.remove('invalid');
+                }
+                
+                // Specific range checks
+                if (field.id === 'age' && (field.value < 1 || field.value > 100)) isValid = false;
+                if (field.id === 'height' && (field.value < 1 || field.value > 250)) isValid = false;
+                if (field.id === 'weight' && (field.value < 1 || field.value > 300)) isValid = false;
+                if (field.id === 'ap_hi' && (field.value < 60 || field.value > 240)) isValid = false;
+                if (field.id === 'ap_lo' && (field.value < 40 || field.value > 130)) isValid = false;
+                if (['cholesterol', 'gluc'].includes(field.id) && ![1,2,3].includes(parseInt(field.value))) isValid = false;
+                if (['smoke', 'alco', 'active'].includes(field.id) && ![0,1].includes(parseInt(field.value))) isValid = false;
+            });
+            
+            submitBtn.disabled = !isValid;
+        }
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Compute BMI: weight (kg) / (height (m))^2
+            const age_years = parseInt(document.getElementById('age').value);
+            const height = parseInt(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const bmi = weight / Math.pow(height / 100, 2);
+            
+            // Map to API format (values as specified)
+            const inputData = {
+                gender: document.getElementById('gender').value === 'M' ? 2 : 1,
+                height: height,
+                ap_hi: parseInt(document.getElementById('ap_hi').value),
+                ap_lo: parseInt(document.getElementById('ap_lo').value),
+                cholesterol: parseInt(document.getElementById('cholesterol').value),
+                gluc: parseInt(document.getElementById('gluc').value),
+                smoke: parseInt(document.getElementById('smoke').value),
+                alco: parseInt(document.getElementById('alco').value),
+                active: parseInt(document.getElementById('active').value),
+                age_years: age_years,
+                BMI: parseFloat(bmi.toFixed(2))
+            };
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(inputData)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                displayResult(result);
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">Error: ${error.message}. Check console or API.</p>`;
+                resultDiv.className = 'error';
+                resultDiv.style.display = 'block';
+                console.error(error);
+            }
+        });
+        
+        function displayResult(data) {
+            const className = data.risk_class === 1 ? 'high-risk' : 'low-risk';
+            resultDiv.innerHTML = `
+                <h3>Risk Assessment</h3>
+                <p><strong>Probability:</strong> ${(data.risk_probability * 100).toFixed(2)}%</p>
+                <p><strong>Risk Level:</strong> ${data.risk_class === 1 ? 'High' : 'Low'}</p>
+                <p><strong>Message:</strong> ${data.message}</p>
+                <small>Disclaimer: This is a ML-based estimate; consult a doctor.</small>
+            `;
+            resultDiv.className = className;
+            resultDiv.style.display = 'block';
+        }
+        
+        // Initial validation
+        validateForm();
+    </script>
+</body>
+</html>
