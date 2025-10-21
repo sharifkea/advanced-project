@@ -30,88 +30,92 @@
 <body>
     <h1>Cardiovascular Risk Assessment</h1>
     <p>Enter your details below for a preliminary risk prediction (not medical advice). All fields are validated per dataset specifications.</p>
-    
+
     <form id="riskForm">
         <label for="age">Age (years, Range:1-100):</label>
         <input type="number" id="age" min="1" max="100" step="1" required>
-        
+
         <label for="gender">Gender:</label>
         <select id="gender" required>
             <option value="">Select...</option>
             <option value="F">Female (1)</option>
             <option value="M">Male (2)</option>
         </select>
-        
+
         <label for="height">Height (cm, Range: 1-250):</label>
         <input type="number" id="height" min="1" max="250" step="1" required>
-        
+
         <label for="weight">Weight (kg, Range: 1-300):</label>
         <input type="number" id="weight" min="1" max="300" step="0.1" required>
-        
+
         <label for="ap_hi">Systolic BP (ap_hi, mmHg, Range: 60-240):</label>
         <input type="number" id="ap_hi" min="60" max="240" step="1" required>
-        
+
         <label for="ap_lo">Diastolic BP (ap_lo, mmHg, Range: 40-130):</label>
         <input type="number" id="ap_lo" min="40" max="130" step="1" required>
-        
+
         <label for="cholesterol">Cholesterol:</label>
         <select id="cholesterol" required>
             <option value="">Select...</option>
             <option value="1">Normal (1)</option>
-            <option value="2">Above normal (2)</option>
-            <option value="3">Well above normal (3)</option>
+            <option value="2">Above Normal (2)</option>
+            <option value="3">Well Above Normal (3)</option>
         </select>
-        
+
         <label for="gluc">Glucose:</label>
         <select id="gluc" required>
             <option value="">Select...</option>
             <option value="1">Normal (1)</option>
-            <option value="2">Above normal (2)</option>
-            <option value="3">Well above normal (3)</option>
+            <option value="2">Above Normal (2)</option>
+            <option value="3">Well Above Normal (3)</option>
         </select>
-        
+
         <label for="smoke">Smoke:</label>
         <select id="smoke" required>
             <option value="">Select...</option>
             <option value="0">No (0)</option>
             <option value="1">Yes (1)</option>
         </select>
-        
+
         <label for="alco">Alcohol:</label>
         <select id="alco" required>
             <option value="">Select...</option>
             <option value="0">No (0)</option>
             <option value="1">Yes (1)</option>
         </select>
-        
+
         <label for="active">Physically Active:</label>
         <select id="active" required>
             <option value="">Select...</option>
             <option value="0">No (0)</option>
             <option value="1">Yes (1)</option>
         </select>
-        
+
         <button type="submit" id="submitBtn">Predict Risk</button>
     </form>
-    
+
     <div id="result"></div>
+
+    <footer>
+        &copy; 2025 Arturos Abul, Liza, Neha, Sharif, Sihab - at RUC
+    </footer>
 
     <script>
         const form = document.getElementById('riskForm');
         const submitBtn = document.getElementById('submitBtn');
         const resultDiv = document.getElementById('result');
-        
+
         // API endpoint (update to your hosted URL)
-        const API_URL = 'http://127.0.0.1:8000/predict';
-        
+        const API_URL = 'https://heartdiseaseprediction.pythonanywhere.com/predict';
+
         // Validation on input change
         form.addEventListener('input', validateForm);
         form.addEventListener('change', validateForm);
-        
+
         function validateForm() {
             let isValid = true;
             const fields = form.querySelectorAll('input, select');
-            
+
             fields.forEach(field => {
                 if (!field.value || field.value === '') {
                     isValid = false;
@@ -119,7 +123,7 @@
                 } else {
                     field.classList.remove('invalid');
                 }
-                
+
                 // Specific range checks
                 if (field.id === 'age' && (field.value < 1 || field.value > 100)) isValid = false;
                 if (field.id === 'height' && (field.value < 1 || field.value > 250)) isValid = false;
@@ -129,19 +133,19 @@
                 if (['cholesterol', 'gluc'].includes(field.id) && ![1,2,3].includes(parseInt(field.value))) isValid = false;
                 if (['smoke', 'alco', 'active'].includes(field.id) && ![0,1].includes(parseInt(field.value))) isValid = false;
             });
-            
+
             submitBtn.disabled = !isValid;
         }
-        
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Compute BMI: weight (kg) / (height (m))^2
             const age_years = parseInt(document.getElementById('age').value);
             const height = parseInt(document.getElementById('height').value);
             const weight = parseFloat(document.getElementById('weight').value);
             const bmi = weight / Math.pow(height / 100, 2);
-            
+
             // Map to API format (values as specified)
             const inputData = {
                 gender: document.getElementById('gender').value === 'M' ? 2 : 1,
@@ -156,18 +160,18 @@
                 age_years: age_years,
                 BMI: parseFloat(bmi.toFixed(2))
             };
-            
+
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(inputData)
                 });
-                
+
                 if (!response.ok) {
                     throw new Error(`API error: ${response.status}`);
                 }
-                
+
                 const result = await response.json();
                 displayResult(result);
             } catch (error) {
@@ -177,7 +181,7 @@
                 console.error(error);
             }
         });
-        
+
         function displayResult(data) {
             const className = data.risk_class === 1 ? 'high-risk' : 'low-risk';
             resultDiv.innerHTML = `
@@ -190,12 +194,9 @@
             resultDiv.className = className;
             resultDiv.style.display = 'block';
         }
-        
+
         // Initial validation
         validateForm();
     </script>
-    <footer>
-        &copy; 2025 Arturos Abul, Liza, Neha, Sharif, Sihab - at RUC
-    </footer>
 </body>
 </html>

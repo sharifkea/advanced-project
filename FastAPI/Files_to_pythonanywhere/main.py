@@ -1,30 +1,42 @@
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 import joblib  # or use pickle if you saved with pickle
 import numpy as np
 import pandas as pd
 from typing import Dict, Any
-from fastapi.middleware.cors import CORSMiddleware
+
 # Initialize FastAPI app
-app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using XGBoost model")
+app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using LightBGM model")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For local/prod; tighten to ["http://127.0.0.1:8000", "https://ronyosharif.pythonanywhere.com"] in prod
+    allow_origins=["*"],  # For local/prod; tighten to ["http://127.0.0.1:8000", "https://heartdiseaseprediction.pythonanywhere.com"] in prod
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.mount("/static", StaticFiles(directory="/home/heartdiseaseprediction/mysite/static"), name="static")
 
-# Load the trained model and scaler
-# Assuming you saved them as 'xgboost_model.pkl' and 'scaler.pkl' using joblib.dump(model, 'xgboost_model.pkl')
+# New root redirect
+@app.get("/", response_class=RedirectResponse)
+async def root():
+    return RedirectResponse(url="/static/index.html")
+
+# Load with absolute paths (fixes cwd issue)
 try:
-    model = joblib.load('best_model.pkl')
-    scaler = joblib.load('scaler.pkl')
-    print("Model and scaler loaded successfully!")
-except FileNotFoundError:
-    raise Exception("Model or scaler file not found. Please ensure 'xgboost_model.pkl' and 'scaler.pkl' are in the same directory.")
+    MODEL_PATH = '/home/heartdiseaseprediction/cardio-api/best_model.pkl'
+    SCALER_PATH = '/home/heartdiseaseprediction/cardio-api/scaler.pkl'  # Adjust if your scaler file name differs
 
-#heartdiseaseprediction
+    model = joblib.load(MODEL_PATH)
+    scaler = joblib.load(SCALER_PATH)  # Skip if no scaler
+    print("Model and scaler loaded successfully from absolute paths!")  # Temp debug
+except FileNotFoundError as e:
+    raise Exception(f"File not found (check upload): {str(e)}")
+except Exception as e:
+    raise Exception(f"Load error: {str(e)}")
 
 # Define input schema using Pydantic for validation
 class PredictionInput(BaseModel):
@@ -53,29 +65,26 @@ async def predict_risk(input_data: PredictionInput):
         # Convert input to DataFrame for consistency with training
         input_dict = input_data.dict()
         input_df = pd.DataFrame([input_dict])
-        
+
         # Ensure column order matches training (adjust if your feature order differs)
-        feature_columns = ['gender', 'height', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc', 
+        feature_columns = ['gender', 'height', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc',
                            'smoke', 'alco', 'active', 'age_years', 'BMI',]
         input_df = input_df[feature_columns]
-        print(input_df)
         # Scale the input features (assuming scaler was fit on these exact features)
         input_scaled = scaler.transform(input_df)
 
-        print(input_scaled)
-        
+
         # Make prediction: probability for class 1 (cardio risk)
         prob = model.predict_proba(input_scaled)[0][1]  # [prob_class0, prob_class1]
         pred_class = 1 if prob > 0.5 else 0  # Binary threshold; adjust as needed
 
-        print(prob, pred_class)
-        
+
         # Generate message
         if pred_class == 1:
             message = "High risk of cardiovascular disease detected. Consult a physician immediately."
         else:
             message = "Low risk of cardiovascular disease. Continue monitoring health."
-        
+
         return PredictionOutput(
             risk_probability=round(prob, 4),
             risk_class=pred_class,
@@ -87,7 +96,7 @@ async def predict_risk(input_data: PredictionInput):
 # Health check endpoint
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "model": "XGBoost loaded"}
+    return {"status": "healthy", "model": "LightGBM loaded"}
 
 # Run the app with: uvicorn main:app --reload (save this as main.py)
 if __name__ == "__main__":

@@ -1,0 +1,7 @@
+:in bash
+pip install --upgrade pythonanywhere
+mkvirtualenv --python=python3.12 cardio-api-venv
+workon cardio-api-venv  # Activate it
+pip install --no-cache-dir --no-deps fastapi uvicorn[standard] joblib scikit-learn==1.7.1 lightgbm pydantic numpy
+pip install --no-cache-dir pandas
+pa website create --domain heartdiseaseprediction.pythonanywhere.com --command '/home/heartdiseaseprediction/.virtualenvs/cardio-api-venv/bin/uvicorn --app-dir /home/heartdiseaseprediction/cardio-api --uds ${DOMAIN_SOCKET} main:app --log-level info'
