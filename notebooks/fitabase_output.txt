@@ -1,0 +1,100 @@
+Initial model trained on data up to 2016-04-02 (2 days).
+Anomaly detected at 2016-04-03 07:26: Actual=83.0, Predicted=65.4, RelDev=21.2%
+Anomaly detected at 2016-04-03 08:00: Actual=98.0, Predicted=77.4, RelDev=21.0%
+Anomaly detected at 2016-04-03 08:01: Actual=115.0, Predicted=89.2, RelDev=22.4%
+Anomaly detected at 2016-04-03 19:27: Actual=102.0, Predicted=80.9, RelDev=20.7%
+Anomaly detected at 2016-04-03 21:14: Actual=73.0, Predicted=87.9, RelDev=20.4%
+
+Previous Test Period - RMSE: 4.8870, MAE: 3.6923
+Anomaly Flags (1): 5 / 1440
+Model retrained on data up to 2016-04-03 (3 days).
+Anomaly detected at 2016-04-04 00:44: Actual=69.0, Predicted=86.3, RelDev=25.0%
+Anomaly detected at 2016-04-04 02:10: Actual=64.0, Predicted=84.3, RelDev=31.7%
+Anomaly detected at 2016-04-04 03:57: Actual=63.0, Predicted=78.6, RelDev=24.7%
+Anomaly detected at 2016-04-04 04:44: Actual=62.0, Predicted=75.1, RelDev=21.2%
+Anomaly detected at 2016-04-04 06:29: Actual=58.0, Predicted=71.5, RelDev=23.3%
+Anomaly detected at 2016-04-04 07:34: Actual=62.0, Predicted=75.2, RelDev=21.3%
+Anomaly detected at 2016-04-04 08:27: Actual=55.0, Predicted=66.6, RelDev=21.1%
+Anomaly detected at 2016-04-04 08:34: Actual=91.0, Predicted=71.7, RelDev=21.2%
+Anomaly detected at 2016-04-04 19:15: Actual=67.0, Predicted=80.8, RelDev=20.6%
+
+Previous Test Period - RMSE: 3.8420, MAE: 2.7399
+Anomaly Flags (1): 9 / 1440
+Model retrained on data up to 2016-04-04 (4 days).
+Anomaly detected at 2016-04-05 15:06: Actual=70.0, Predicted=90.2, RelDev=28.9%
+Anomaly detected at 2016-04-05 15:51: Actual=60.0, Predicted=76.6, RelDev=27.7%
+Anomaly detected at 2016-04-05 16:21: Actual=67.0, Predicted=92.4, RelDev=38.0%
+Anomaly detected at 2016-04-05 16:28: Actual=113.0, Predicted=90.2, RelDev=20.1%
+
+Previous Test Period - RMSE: 3.2671, MAE: 2.1272
+Anomaly Flags (1): 4 / 1440
+Model retrained on data up to 2016-04-05 (5 days).
+Anomaly detected at 2016-04-06 05:12: Actual=63.0, Predicted=76.1, RelDev=20.8%
+Anomaly detected at 2016-04-06 06:45: Actual=61.0, Predicted=76.8, RelDev=25.9%
+Anomaly detected at 2016-04-06 15:34: Actual=117.0, Predicted=93.5, RelDev=20.1%
+Anomaly detected at 2016-04-06 16:00: Actual=74.0, Predicted=94.3, RelDev=27.5%
+Anomaly detected at 2016-04-06 20:14: Actual=72.0, Predicted=91.2, RelDev=26.7%
+Anomaly detected at 2016-04-06 21:09: Actual=122.0, Predicted=94.3, RelDev=22.7%
+
+Previous Test Period - RMSE: 4.0662, MAE: 2.8944
+Anomaly Flags (1): 6 / 1440
+Model retrained on data up to 2016-04-06 (6 days).
+Anomaly detected at 2016-04-07 10:03: Actual=102.0, Predicted=78.5, RelDev=23.1%
+Anomaly detected at 2016-04-07 14:44: Actual=62.0, Predicted=89.5, RelDev=44.3%
+Anomaly detected at 2016-04-07 20:21: Actual=69.0, Predicted=93.1, RelDev=35.0%
+Anomaly detected at 2016-04-07 21:23: Actual=70.0, Predicted=91.3, RelDev=30.4%
+Anomaly detected at 2016-04-07 21:35: Actual=70.0, Predicted=89.0, RelDev=27.1%
+Anomaly detected at 2016-04-07 21:43: Actual=64.0, Predicted=84.9, RelDev=32.6%
+Anomaly detected at 2016-04-07 21:51: Actual=92.0, Predicted=67.6, RelDev=26.5%
+
+Previous Test Period - RMSE: 3.7090, MAE: 2.4090
+Anomaly Flags (1): 7 / 1440
+Model retrained on data up to 2016-04-07 (7 days).
+Anomaly detected at 2016-04-08 05:03: Actual=95.0, Predicted=69.1, RelDev=27.3%
+Anomaly detected at 2016-04-08 08:03: Actual=70.0, Predicted=100.8, RelDev=44.0%
+Anomaly detected at 2016-04-08 15:45: Actual=69.0, Predicted=95.6, RelDev=38.5%
+Anomaly detected at 2016-04-08 15:46: Actual=64.0, Predicted=78.7, RelDev=23.0%
+Anomaly detected at 2016-04-08 16:18: Actual=76.0, Predicted=94.8, RelDev=24.7%
+Anomaly detected at 2016-04-08 21:10: Actual=71.0, Predicted=92.5, RelDev=30.2%
+Anomaly detected at 2016-04-08 21:11: Actual=105.0, Predicted=78.1, RelDev=25.6%
+
+Previous Test Period - RMSE: 4.1551, MAE: 2.7654
+Anomaly Flags (1): 7 / 1440
+Model retrained on data up to 2016-04-08 (8 days).
+Anomaly detected at 2016-04-09 10:36: Actual=83.0, Predicted=59.0, RelDev=28.9%
+
+Previous Test Period - RMSE: 3.7319, MAE: 2.5175
+Anomaly Flags (1): 1 / 1440
+Model retrained on data up to 2016-04-09 (9 days).
+Anomaly detected at 2016-04-10 08:04: Actual=106.0, Predicted=72.6, RelDev=31.5%
+Anomaly detected at 2016-04-10 08:05: Actual=72.0, Predicted=99.3, RelDev=37.9%
+Anomaly detected at 2016-04-10 10:21: Actual=146.0, Predicted=108.1, RelDev=26.0%
+Anomaly detected at 2016-04-10 22:40: Actual=72.0, Predicted=87.2, RelDev=21.1%
+Anomaly detected at 2016-04-10 23:34: Actual=63.0, Predicted=78.5, RelDev=24.7%
+
+Previous Test Period - RMSE: 3.3081, MAE: 1.9793
+Anomaly Flags (1): 5 / 1440
+Model retrained on data up to 2016-04-10 (10 days).
+Anomaly detected at 2016-04-11 02:31: Actual=76.0, Predicted=60.2, RelDev=20.8%
+Anomaly detected at 2016-04-11 03:43: Actual=64.0, Predicted=79.2, RelDev=23.7%
+Anomaly detected at 2016-04-11 05:01: Actual=57.0, Predicted=69.3, RelDev=21.7%
+Anomaly detected at 2016-04-11 19:23: Actual=78.0, Predicted=93.8, RelDev=20.3%
+Anomaly detected at 2016-04-11 21:08: Actual=68.0, Predicted=84.9, RelDev=24.9%
+Anomaly detected at 2016-04-11 23:39: Actual=96.0, Predicted=67.9, RelDev=29.3%
+Anomaly detected at 2016-04-11 23:41: Actual=70.0, Predicted=86.1, RelDev=23.1%
+
+Previous Test Period - RMSE: 3.4470, MAE: 2.2248
+Anomaly Flags (1): 7 / 1440
+Model retrained on data up to 2016-04-11 (11 days).
+Anomaly detected at 2016-04-12 00:17: Actual=86.0, Predicted=65.3, RelDev=24.1%
+Anomaly detected at 2016-04-12 00:25: Actual=58.0, Predicted=75.0, RelDev=29.3%
+
+Subscriber stopped by user (KeyboardInterrupt).
+
+Final Partial Test - RMSE: 4.6338, MAE: 2.6318
+Final Flags (1): 2 / 57
+Cleaning up... Closing socket and context.
+
+Final Cleanup Metrics - RMSE: 4.6338, MAE: 2.6318
+Final Flags (1): 2 / 57
+Subscriber closed successfully.
