@@ -9,22 +9,18 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using XGBoost model")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For local/prod; tighten to ["http://127.0.0.1:8000", "https://ronyosharif.pythonanywhere.com"] in prod
+    allow_origins=["*"],  # For local/prod; tighten to ["http://127.0.0.1:8000"] in prod
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Load the trained model and scaler
-# Assuming you saved them as 'xgboost_model.pkl' and 'scaler.pkl' using joblib.dump(model, 'xgboost_model.pkl')
 try:
     model = joblib.load('best_model.pkl')
     scaler = joblib.load('scaler.pkl')
     print("Model and scaler loaded successfully!")
 except FileNotFoundError:
-    raise Exception("Model or scaler file not found. Please ensure 'xgboost_model.pkl' and 'scaler.pkl' are in the same directory.")
-
-#heartdiseaseprediction
+    raise Exception("Model or scaler file not found.")
 
 # Define input schema using Pydantic for validation
 class PredictionInput(BaseModel):
@@ -54,7 +50,7 @@ async def predict_risk(input_data: PredictionInput):
         input_dict = input_data.dict()
         input_df = pd.DataFrame([input_dict])
         
-        # Ensure column order matches training (adjust if your feature order differs)
+        # Ensure column order matches training (adjust if our feature order differs)
         feature_columns = ['gender', 'height', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc', 
                            'smoke', 'alco', 'active', 'age_years', 'BMI',]
         input_df = input_df[feature_columns]
