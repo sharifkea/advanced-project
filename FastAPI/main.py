@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import joblib  # or use pickle if you saved with pickle
+import joblib  
 import numpy as np
 import pandas as pd
 from typing import Dict, Any
@@ -24,7 +24,7 @@ except FileNotFoundError:
 
 # Define input schema using Pydantic for validation
 class PredictionInput(BaseModel):
-    gender: int  # 1: female, 2: male (or as per your encoding)
+    gender: int  # 1: female, 2: male 
     height: int  # in cm
     ap_hi: int   # systolic blood pressure
     ap_lo: int   # diastolic blood pressure
@@ -88,4 +88,5 @@ async def health_check():
 # Run the app with: uvicorn main:app --reload (save this as main.py)
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
