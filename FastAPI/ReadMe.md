@@ -1,21 +1,16 @@
-# Navigate to your project directory (you are already there)
+# How to set up the venv for API and run the server 
 
-# Create the virtual environment (you already did this)
+# Create the virtual environment 
     python -m venv ./venv
 
-# Activate the virtual environment (Crucial Step!)
+# Activate the virtual environment 
     .\venv\Scripts\activate
 
-# Install FastAPI and Uvicorn (Corrected package name)
+# Install FastAPI and Uvicorn 
     pip install fastapi uvicorn[standard] lightgbm scikit-learn pandas numpy pydantic joblib 
 
-# Start API: Kill the server (Ctrl+C), then 
+# Start API: We can kill the server with (Ctrl+C), then 
     uvicorn main:app --reload
 
-# Now you can start developing your FastAPI application!
-
-# To check installed packages within the venv:
-    pip list
-
-# When you are finished working, deactivate the environment:
+# When finished working, deactivate the environment:
     deactivate
