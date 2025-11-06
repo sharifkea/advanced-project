@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
-import joblib  # or use pickle if you saved with pickle
+import joblib
 import numpy as np
 import pandas as pd
 from typing import Dict, Any
@@ -28,7 +28,7 @@ async def root():
 # Load with absolute paths (fixes cwd issue)
 try:
     MODEL_PATH = '/home/heartdiseaseprediction/cardio-api/best_model.pkl'
-    SCALER_PATH = '/home/heartdiseaseprediction/cardio-api/scaler.pkl'  # Adjust if your scaler file name differs
+    SCALER_PATH = '/home/heartdiseaseprediction/cardio-api/scaler.pkl'  # Adjust if our scaler file name differs
 
     model = joblib.load(MODEL_PATH)
     scaler = joblib.load(SCALER_PATH)  # Skip if no scaler
@@ -40,7 +40,7 @@ except Exception as e:
 
 # Define input schema using Pydantic for validation
 class PredictionInput(BaseModel):
-    gender: int  # 1: female, 2: male (or as per your encoding)
+    gender: int  # 1: female, 2: male (or as per our encoding)
     height: int  # in cm
     ap_hi: int   # systolic blood pressure
     ap_lo: int   # diastolic blood pressure
@@ -66,7 +66,7 @@ async def predict_risk(input_data: PredictionInput):
         input_dict = input_data.dict()
         input_df = pd.DataFrame([input_dict])
 
-        # Ensure column order matches training (adjust if your feature order differs)
+        # Ensure column order matches training (adjust if our feature order differs)
         feature_columns = ['gender', 'height', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc',
                            'smoke', 'alco', 'active', 'age_years', 'BMI',]
         input_df = input_df[feature_columns]
