@@ -4,11 +4,17 @@ import joblib  # or use pickle if you saved with pickle
 import numpy as np
 import pandas as pd
 from typing import Dict, Any
-
+from fastapi.middleware.cors import CORSMiddleware
 # Initialize FastAPI app
-app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using LightGBM model")
+app = FastAPI(title="Cardiovascular Risk Prediction API", description="API for predicting cardiovascular risk using XGBoost model")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For local/prod; tighten to ["http://127.0.0.1:8000"] in prod
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# Load the pre-trained model and scaler
 try:
     model = joblib.load('best_model.pkl')
     scaler = joblib.load('scaler.pkl')
@@ -44,7 +50,7 @@ async def predict_risk(input_data: PredictionInput):
         input_dict = input_data.dict()
         input_df = pd.DataFrame([input_dict])
         
-        # Ensure column order matches training (adjust if your feature order differs)
+        # Ensure column order matches training (adjust if our feature order differs)
         feature_columns = ['gender', 'height', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc', 
                            'smoke', 'alco', 'active', 'age_years', 'BMI',]
         input_df = input_df[feature_columns]
@@ -77,7 +83,7 @@ async def predict_risk(input_data: PredictionInput):
 # Health check endpoint
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "model": "LightGBM loaded"}
+    return {"status": "healthy", "model": "XGBoost loaded"}
 
 # Run the app with: uvicorn main:app --reload (save this as main.py)
 if __name__ == "__main__":
