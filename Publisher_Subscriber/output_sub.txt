@@ -1,0 +1,51 @@
+Initial model trained on data up to 2016-04-02 (2 days).
+Anomaly detected at 2016-04-03 08:01: Actual=115.0, Predicted=90.1, RelDev=21.7%
+
+Previous Test Period - RMSE: 4.6329, MAE: 3.5348
+Anomaly Flags (1): 1 / 1440
+Model retrained on data up to 2016-04-03 (3 days).
+Anomaly detected at 2016-04-04 06:29: Actual=58.0, Predicted=71.4, RelDev=23.1%
+Anomaly detected at 2016-04-04 08:27: Actual=55.0, Predicted=66.4, RelDev=20.7%
+
+Previous Test Period - RMSE: 3.8498, MAE: 2.7534
+Anomaly Flags (1): 2 / 1440
+Model retrained on data up to 2016-04-04 (4 days).
+Anomaly detected at 2016-04-05 16:28: Actual=113.0, Predicted=90.1, RelDev=20.3%
+
+Previous Test Period - RMSE: 3.2636, MAE: 2.1193
+Anomaly Flags (1): 1 / 1440
+Model retrained on data up to 2016-04-05 (5 days).
+Anomaly detected at 2016-04-06 15:34: Actual=117.0, Predicted=93.5, RelDev=20.1%
+Anomaly detected at 2016-04-06 21:09: Actual=122.0, Predicted=93.7, RelDev=23.2%
+
+Previous Test Period - RMSE: 4.0912, MAE: 2.9239
+Anomaly Flags (1): 2 / 1440
+Model retrained on data up to 2016-04-06 (6 days).
+Anomaly detected at 2016-04-07 10:03: Actual=102.0, Predicted=78.5, RelDev=23.1%
+
+Previous Test Period - RMSE: 3.7145, MAE: 2.4158
+Anomaly Flags (1): 1 / 1440
+Model retrained on data up to 2016-04-07 (7 days).
+Anomaly detected at 2016-04-08 21:11: Actual=105.0, Predicted=77.9, RelDev=25.8%
+
+Previous Test Period - RMSE: 4.1440, MAE: 2.7585
+Anomaly Flags (1): 1 / 1440
+Model retrained on data up to 2016-04-08 (8 days).
+
+Previous Test Period - RMSE: 3.6691, MAE: 2.3912
+Anomaly Flags (1): 0 / 1440
+Model retrained on data up to 2016-04-09 (9 days).
+Anomaly detected at 2016-04-10 08:04: Actual=106.0, Predicted=72.6, RelDev=31.5%
+Anomaly detected at 2016-04-10 10:21: Actual=146.0, Predicted=107.8, RelDev=26.2%
+
+Previous Test Period - RMSE: 3.3035, MAE: 1.9687
+Anomaly Flags (1): 2 / 1440
+Model retrained on data up to 2016-04-10 (10 days).
+Anomaly detected at 2016-04-11 05:01: Actual=57.0, Predicted=69.4, RelDev=21.8%
+
+Previous Test Period - RMSE: 3.4483, MAE: 2.2306
+Anomaly Flags (1): 1 / 1440
+Model retrained on data up to 2016-04-11 (11 days).
+Anomaly detected at 2016-04-12 00:25: Actual=58.0, Predicted=75.0, RelDev=29.4%
+
+Total Flag=12
