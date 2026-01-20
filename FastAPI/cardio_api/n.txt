@@ -1,0 +1,1 @@
+pa website create --domain cardioriskassessment.pythonanywhere.com --command '/home/cardioriskassessment/.virtualenvs/cardio-api-venv/bin/uvicorn --app-dir /home/cardioriskassessment/cardio-api --uds ${DOMAIN_SOCKET} main:app --log-level info'

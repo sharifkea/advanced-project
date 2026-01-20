@@ -1,0 +1,70 @@
+:in bash
+pip install --upgrade pythonanywhere
+mkvirtualenv --python=python3.12 cardio-api-venv
+workon cardio-api-venv  # Activate it
+pip install -r requirements.txt
+pip install --no-cache-dir -r requirements.txt
+pip install --no-cache-dir --no-deps -r requirements.txt
+
+pa website create --domain cardiovascularriskassessment.pythonanywhere.com --command '/home/cardiovascularriskassessment/.virtualenvs/cardio-api-venv/bin/uvicorn --app-dir /home/cardiovascularriskassessment/cardio-api --uds ${DOMAIN_SOCKET} main:app --log-level info'
+
+
+: API token
+import requests
+username = 'cardiovascularriskassessment'
+token = '7d8e15f98c75f39aed2f83b21ce8b735388960d0'
+
+response = requests.get(
+    'https://www.pythonanywhere.com/api/v0/user/{username}/cpu/'.format(
+        username=username
+    ),
+    headers={'Authorization': 'Token {token}'.format(token=token)}
+)
+if response.status_code == 200:
+    print('CPU quota info:')
+    print(response.content)
+else:
+    print('Got unexpected status code {}: {!r}'.format(response.status_code, response.content))
+
+du -h --max-depth=1 ~ | sort -h
+
+pip cache purge
+rm -rf ~/.cache/pip
+
+
+# Remove old venv if exists
+rm -rf ~/.virtualenvs/cardio-api-venv
+
+cat > requirements.txt << 'EOF'
+annotated-types==0.7.0
+anyio==4.11.0
+click==8.3.0
+fastapi==0.119.0
+h11==0.16.0
+httptools==0.7.1
+idna==3.11
+joblib==1.5.2
+lightgbm==4.6.0
+numpy==2.3.4
+pandas==2.3.3
+pip==24.3.1
+pydantic==2.12.2
+pydantic_core==2.41.4
+python-dateutil==2.9.0.post0
+python-dotenv==1.1.1
+pytz==2025.2
+PyYAML==6.0.3
+scikit-learn==1.7.2
+scipy==1.16.2
+six==1.17.0
+sniffio==1.3.1
+starlette==0.48.0
+threadpoolctl==3.6.0
+typing_extensions==4.15.0
+typing-inspection==0.4.2
+tzdata==2025.2
+uvicorn==0.37.0
+uvloop==0.22.1
+watchfiles==1.1.1
+websockets==15.0.1
+EOF
