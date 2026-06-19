@@ -1,0 +1,19 @@
+dy.
+
+XG boost.ipynb
+XGB_all_usres.ipynb
+filling_FE_VF_4020332650.ipynb
+Neural Network.ipynb
+
+
+
+fitabase_subscriber_warm.ipynb
+fitadase_publisher.ipynb
+
+st.
+cleaning_scaling.ipynb
+train_models.ipynb
+
+index.html
+main.py
+

@@ -1,0 +1,91 @@
+Initial model trained on data up to 2016-04-02 (2 days). Training time: 0.29 sec
+Anomaly detected at 2016-04-03 08:01: Actual=115.0, Predicted=89.1, RelDev=22.5%, Total Flag=1
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+
+Previous Test Period - RMSE: 4.8266, MAE: 3.6557
+Anomaly Flags (1): 1 / 1440
+Model retrained on data for 2016-04-03. Training time: 0.6160 sec
+Anomaly detected at 2016-04-04 06:29: Actual=58.0, Predicted=73.1, RelDev=26.1%, Total Flag=2
+Heart Disease Prediction API Result for Test No 2: {'risk_probability': 0.2598, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-04 08:27: Actual=55.0, Predicted=68.9, RelDev=25.2%, Total Flag=3
+Heart Disease Prediction API Result for Test No 3: {'risk_probability': 0.1727, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+
+Previous Test Period - RMSE: 4.0541, MAE: 2.9462
+Anomaly Flags (1): 2 / 1440
+Model retrained on data for 2016-04-04. Training time: 0.7281 sec
+
+Previous Test Period - RMSE: 3.4605, MAE: 2.3239
+Anomaly Flags (1): 0 / 1440
+Model retrained on data for 2016-04-05. Training time: 0.5891 sec
+Anomaly detected at 2016-04-06 16:59: Actual=109.0, Predicted=84.2, RelDev=22.7%, Total Flag=4
+Heart Disease Prediction API Result for Test No 4: {'risk_probability': 0.1544, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-06 21:09: Actual=122.0, Predicted=92.5, RelDev=24.2%, Total Flag=5
+Heart Disease Prediction API Result for Test No 5: {'risk_probability': 0.1544, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+
+Previous Test Period - RMSE: 4.9984, MAE: 3.7002
+Anomaly Flags (1): 2 / 1440
+Model retrained on data for 2016-04-06. Training time: 0.6047 sec
+Anomaly detected at 2016-04-07 10:03: Actual=102.0, Predicted=77.9, RelDev=23.6%, Total Flag=6
+Heart Disease Prediction API Result for Test No 6: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-07 21:47: Actual=56.0, Predicted=70.1, RelDev=25.1%, Total Flag=7
+Heart Disease Prediction API Result for Test No 7: {'risk_probability': 0.3763, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-07 21:48: Actual=57.0, Predicted=69.9, RelDev=22.5%, Total Flag=8
+Heart Disease Prediction API Result for Test No 8: {'risk_probability': 0.6452, 'risk_class': 1, 'message': 'High risk of cardiovascular disease detected. Consult a physician immediately.'}
+
+Previous Test Period - RMSE: 5.3010, MAE: 3.9337
+Anomaly Flags (1): 3 / 1440
+Model retrained on data for 2016-04-07. Training time: 0.6592 sec
+Anomaly detected at 2016-04-08 05:05: Actual=102.0, Predicted=78.5, RelDev=23.0%, Total Flag=9
+Heart Disease Prediction API Result for Test No 9: {'risk_probability': 0.8564, 'risk_class': 1, 'message': 'High risk of cardiovascular disease detected. Consult a physician immediately.'}
+Anomaly detected at 2016-04-08 05:06: Actual=103.0, Predicted=81.0, RelDev=21.3%, Total Flag=10
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-08 05:07: Actual=108.0, Predicted=80.9, RelDev=25.1%, Total Flag=11
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-08 05:08: Actual=103.0, Predicted=80.4, RelDev=21.9%, Total Flag=12
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-08 05:19: Actual=112.0, Predicted=87.9, RelDev=21.6%, Total Flag=13
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-08 15:30: Actual=107.0, Predicted=84.5, RelDev=21.0%, Total Flag=14
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-08 16:22: Actual=105.0, Predicted=79.4, RelDev=24.4%, Total Flag=15
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-08 19:18: Actual=115.0, Predicted=90.8, RelDev=21.0%, Total Flag=16
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-08 21:11: Actual=105.0, Predicted=79.0, RelDev=24.8%, Total Flag=17
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+
+Previous Test Period - RMSE: 6.7996, MAE: 5.0238
+Anomaly Flags (1): 9 / 1440
+Model retrained on data for 2016-04-08. Training time: 0.7231 sec
+Anomaly detected at 2016-04-09 10:35: Actual=52.0, Predicted=64.3, RelDev=23.7%, Total Flag=18
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-09 14:31: Actual=108.0, Predicted=85.4, RelDev=20.9%, Total Flag=19
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+
+Previous Test Period - RMSE: 4.8134, MAE: 3.2610
+Anomaly Flags (1): 2 / 1440
+Model retrained on data for 2016-04-09. Training time: 0.7576 sec
+Anomaly detected at 2016-04-10 08:04: Actual=106.0, Predicted=72.7, RelDev=31.5%, Total Flag=20
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-10 10:21: Actual=146.0, Predicted=113.9, RelDev=22.0%, Total Flag=21
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+
+Previous Test Period - RMSE: 3.9465, MAE: 2.7122
+Anomaly Flags (1): 2 / 1440
+Model retrained on data for 2016-04-10. Training time: 0.8301 sec
+Anomaly detected at 2016-04-11 05:01: Actual=57.0, Predicted=68.7, RelDev=20.5%, Total Flag=22
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-11 06:02: Actual=55.0, Predicted=71.0, RelDev=29.2%, Total Flag=23
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+
+Previous Test Period - RMSE: 5.3929, MAE: 4.2463
+Anomaly Flags (1): 2 / 1440
+Model retrained on data for 2016-04-11. Training time: 0.9072 sec
+Anomaly detected at 2016-04-12 00:25: Actual=58.0, Predicted=71.0, RelDev=22.4%, Total Flag=24
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-12 02:25: Actual=53.0, Predicted=68.2, RelDev=28.7%, Total Flag=25
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-12 02:26: Actual=54.0, Predicted=66.7, RelDev=23.4%, Total Flag=26
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
+Anomaly detected at 2016-04-12 02:27: Actual=54.0, Predicted=68.8, RelDev=27.5%, Total Flag=27
+Heart Disease Prediction API Result for Test No 1: {'risk_probability': 0.3174, 'risk_class': 0, 'message': 'Low risk of cardiovascular disease. Continue monitoring health.'}
